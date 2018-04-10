@@ -10,7 +10,7 @@ export DEBIAN_FRONTEND="noninteractive"
 
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt update
-sudo apt-get install -q -y nodejs nginx mysql-server openssh-server
+sudo apt-get -q -y install nodejs nginx mysql-server openssh-server
 
 mysqladmin -uroot password
 
