@@ -9,8 +9,8 @@ sudo apt install curl git
 export DEBIAN_FRONTEND="noninteractive"
 
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt update
-sudo apt-get -q -y install nodejs nginx mysql-server openssh-server
+apt update
+apt -q -y install nodejs nginx mysql-server openssh-server
 
 mysqladmin -uroot password
 
