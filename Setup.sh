@@ -1,3 +1,9 @@
+#!/bin/bash
+if [[ $EUID != 0 ]]; then
+  sudo "$0"
+  exit
+fi
+
 mkdir -p /app/socket
 mkdir -p /app/ssl
 chmod -R 666 /app/ssl
