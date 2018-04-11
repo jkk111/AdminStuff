@@ -4,6 +4,8 @@ if [[ $EUID != 0 ]]; then
   exit
 fi
 
+sed -i '/deb cdrom/s/^/#/g' /etc/apt/sources.list
+
 mkdir -p /app/socket
 mkdir -p /app/ssl
 chmod -R 666 /app/ssl
