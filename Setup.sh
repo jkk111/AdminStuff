@@ -2,6 +2,7 @@ mkdir -p /app/socket
 mkdir -p /app/ssl
 chmod -R 666 /app/ssl
 chown -R root:root /app/ssl
+sed -i '/deb cdrom/s/^/#/g' /etc/apt/sources.list
 
 sudo apt update
 sudo apt install curl git
