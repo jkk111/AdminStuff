@@ -8,7 +8,7 @@ fi
 sed -i '/deb cdrom/s/^/#/g' /etc/apt/sources.list
 
 apt update
-apt install curl
+apt -q -y install curl
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt -q -y install nodejs
 
