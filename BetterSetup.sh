@@ -4,6 +4,10 @@ if [[ $EUID != 0 ]]; then
   exit
 fi
 
+# Get The User Name For Later Config
+# https://stackoverflow.com/questions/1629605/getting-user-inside-shell-script-when-running-with-sudo
+user=$SUDO_USER
+
 # Get Credentials With A bash script so we can setup without additional prompts
 . SetupCreds.sh
 
