@@ -13,7 +13,7 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt -q -y install nodejs
 
 # Neat little npm feature, can install from a git repo
-npm install -g jkk111/secrets-manager
+npm install -g jkk111/secret-manager
 
 # Get The User Name For Later Config
 # https://stackoverflow.com/questions/1629605/getting-user-inside-shell-script-when-running-with-sudo
