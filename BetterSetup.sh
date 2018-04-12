@@ -4,6 +4,10 @@ if [[ $EUID != 0 ]]; then
   exit
 fi
 
+# Get The User Name For Later Config
+# https://stackoverflow.com/questions/1629605/getting-user-inside-shell-script-when-running-with-sudo
+user="$SUDO_USER"
+
 # Recurring Bug, fails to apt update because of this repo
 sed -i '/deb cdrom/s/^/#/g' /etc/apt/sources.list
 
@@ -12,12 +16,14 @@ apt -q -y install curl
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt -q -y install nodejs
 
-# Neat little npm feature, can install from a git repo
-npm install -g jkk111/secret-manager
+# So Here We Get A Few Issues Because We're Running As Root
+# Broken Permissions on npm for example
 
-# Get The User Name For Later Config
-# https://stackoverflow.com/questions/1629605/getting-user-inside-shell-script-when-running-with-sudo
-user=$SUDO_USER
+chmod -R 700 ~/.npm
+chown -R "$user:$user" ~/.npm
+
+# Neat little npm feature, can install from a git repo
+su - $user -c "npm install -g jkk111/secret-manager"
 
 # Get Credentials With A bash script so we can setup without additional prompts
 . SetupCreds.sh
