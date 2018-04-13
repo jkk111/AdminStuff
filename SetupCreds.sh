@@ -22,7 +22,7 @@ function password() {
     else
       bad_attempt=1
     fi
-    eval "${2}=$password"
+    eval "${2}=\"$password\""
   done
 }
 
@@ -70,11 +70,11 @@ echo "Next we need a password for the Credentials Store"
 password credentials credentials_pass
 
 echo "Next we need a MySql root Password"
-password Mysql mysql_pass
+password Mysql mysql_password
 
 credentials_secret=$(json_secret credentials "${credentials_pass}" "${keyring_pass}" node_app_keyring)
 mysql_user_secret=$(json_secret db_user root "${credentials_pass}" "credentials")
-mysql_pass_secret=$(json_secret db_pass "${mysql_pass}" "${credentials_pass}" "credentials")
+mysql_pass_secret=$(json_secret db_pass "${mysql_password}" "${credentials_pass}" "credentials")
 
 echo $credentials_secret | secrets
 echo $mysql_user_secret | secrets

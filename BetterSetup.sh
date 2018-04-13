@@ -54,5 +54,5 @@ mysqladmin -u root password $mysql_password
 
 git clone https://github.com/jkk111/ApplicationManager /app/manager
 
-sed -i 's/PermitRootLogin .*/PermitRootLogin no/'
+sed -i 's/PermitRootLogin .*/PermitRootLogin no/' /etc/ssh/sshd_config
 systemctl restart sshd
