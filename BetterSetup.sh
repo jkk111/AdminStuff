@@ -29,7 +29,6 @@ apt -q -y install nodejs
 # git clone https://github.com/jkk11/secret-manager
 
 sudo chown $user:$user /usr/lib/node_modules
-
 sudo npm install -g @jkk111/secret-manager
 
 # Get Credentials With A bash script so we can setup without additional prompts
