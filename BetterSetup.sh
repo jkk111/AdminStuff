@@ -19,11 +19,18 @@ apt -q -y install nodejs
 # So Here We Get A Few Issues Because We're Running As Root
 # Broken Permissions on npm for example
 
-chmod -R 700 ~/.npm
-chown -R "$user:$user" ~/.npm
+# chmod -R 700 ~/.npm
+# chown -R "$user:$user" ~/.npm
 
 # Neat little npm feature, can install from a git repo
-su - $user -c "npm install -g jkk111/secret-manager"
+# su - $user -c "npm install -g jkk111/secret-manager"
+# Never Mind More hassle than its worth
+
+# git clone https://github.com/jkk11/secret-manager
+
+sudo chown $user:$user /usr/lib/node_modules
+
+sudo npm install -g @jkk111/secret-manager
 
 # Get Credentials With A bash script so we can setup without additional prompts
 . SetupCreds.sh
@@ -36,6 +43,7 @@ chown -R 600 /app/ca
 chmod -R 600 /app/ssl
 chown -R root:root /app/ssl
 chown -R root:root /app/ca
+chown -R root:root /usr/lib/node_modules # Makes sense to have this be root only writable, I think
 
 sudo apt update
 sudo apt install curl git
