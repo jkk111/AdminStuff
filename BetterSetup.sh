@@ -50,6 +50,9 @@ sudo apt install curl git
 export DEBIAN_FRONTEND="noninteractive"
 apt-get -q -y install nodejs nginx mysql-server openssh-server openssl
 
-mysqladmin -uroot password $mysql_password
+mysqladmin -u root password $mysql_password
 
 git clone https://github.com/jkk111/ApplicationManager /app/manager
+
+sed -i 's/PermitRootLogin .*/PermitRootLogin no/'
+systemctl restart sshd

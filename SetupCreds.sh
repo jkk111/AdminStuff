@@ -11,7 +11,7 @@ function password() {
     echo "Please Enter Password For $1"
     echo -n "Password: "
     read -s password
-    echo "$2 ${!2}"
+    echo
 
     echo -n "Confirm: "
     read -s confirm
